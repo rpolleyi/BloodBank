@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script>
+        var app = angular.module('EligibilityApp', []);
+        app.controller('EligibilityCtrl', Questions.Controller);
+    </script>
+</head>
+
+<h2>Eligibility</h2>
+
+<div id="bodyContainer" ng-app="EligibilityApp">
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="flip-container text-center col-md-12" ng-controller="EligibilityCtrl" ng-init="nextQuestion()">
+                    @*<div class="back" ng-class="{flip: answered, correct: correctAnswer, incorrect:!correctAnswer}">
+                            <p>
+                                <button class="btn btn-info btn-lg next option" ng-click="nextQuestion()" ng-disabled="working">Next Question</button>
+                            </p>
+                        </div>*@
+                    <div class="front" ng-class="{flip: nQuestion.answered}">
+                        <p class="lead">{{nQuestion.title}}</p>
+                        <div class="row text-center">
+                            <button class="btn btn-info btn-lg option" ng-repeat="option in nQuestion.options" ng-click="sendAnswer(option)" ng-disabled="working">{{option.title}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@*<div id="bodyContainer" ng-app="EligibilityApp">
+        <section id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="flip-container text-center col-md-12" ng-controller="EligibilityCtrl" ng-init="nextQuestion()">
+                        <div class="front" ng-class="{flip: answered}">
+                            <p class="lead">{{title}}</p>
+                            <div class="row text-center">
+                                <button class="btn btn-info btn-lg option" ng-repeat="option in options" ng-click="sendAnswer(option)" ng-disabled="working">{{option.title}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>*@
+
+@*@section scripts {
+        <script src="~/Scripts/angular.js"></script>
+        <script src="~/Scripts/EligibilityController.js"></script>
+    }*@

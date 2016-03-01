@@ -1,0 +1,22 @@
+﻿@model LifeLine.Core.Models.ExceptionModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body>
+    <hgroup>
+        <h1>Error.</h1>
+        <div>
+            <span class="alert-danger">Controller Name : </span>@Model.Controller
+        </div>
+        <div>
+            <span class="alert-danger">View Name : </span>@Model.View
+        </div>
+        <div>
+            <span class="alert-danger">Detail : </span>@Model.StackTrace
+        </div>
+    </hgroup>
+</body>
+</html>
