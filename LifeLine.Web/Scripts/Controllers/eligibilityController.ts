@@ -27,7 +27,7 @@ module Questions {
             $scope.nextQuestion = () => {
                 $scope.nQuestion = new Model.Question();
                 
-                $http.get("/api/api/Eligibility").success((data, status, headers, config) => {
+                $http.get("/api/Eligibility").success((data, status, headers, config) => {
                     $scope.nQuestion.options = data.options;
                     $scope.nQuestion.title = data.title;
                     $scope.nQuestion.answered = false;
@@ -44,7 +44,7 @@ module Questions {
                 $scope.nQuestion.working = true;
                 $scope.nQuestion.answered = true;
 
-                $http.post("/api/api/Eligibility", { 'questionId': option.questionId, 'optionId': option.id }).success(function (data, status, headers, config) {
+                $http.post("/api/Eligibility", { 'questionId': option.questionId, 'optionId': option.id }).success(function (data, status, headers, config) {
                     $scope.nQuestion.correctAnswer = (data === true);
                     $scope.nQuestion.working = false;
 

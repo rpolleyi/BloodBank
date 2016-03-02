@@ -28,12 +28,12 @@ namespace LifeLine.Web.Controllers
         // GET: Camp
         public ActionResult Index()
         {
-            //var campList = _db.GetAll();
-            //var campViewModels = campList.Select(i => Automap.MapModelToViewModel<Camp,CampVM>(i)).ToList();
+            var campList = _db.GetAll();
+            var campViewModels = campList.Select(i => Automap.MapModelToViewModel<Camp, CampVM>(i)).ToList();
 
-            //return View(campViewModels);
+            return View(campViewModels);
 
-           
+
         }
 
         // GET: Camp/Details/5

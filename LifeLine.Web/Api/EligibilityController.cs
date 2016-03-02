@@ -16,6 +16,7 @@ using System.Web.Mvc;
 namespace LifeLine.Web.Api
 {
     [System.Web.Mvc.Authorize]
+    [System.Web.Mvc.Route("api/[controller]")]
     public class EligibilityController : ApiController
     {
         private readonly BloodDonorContext _context=  new BloodDonorContext();

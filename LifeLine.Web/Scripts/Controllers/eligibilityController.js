@@ -9,7 +9,7 @@ var Questions;
             var controller = this;
             $scope.nextQuestion = function () {
                 $scope.nQuestion = new Model.Question();
-                $http.get("/api/api/Eligibility").success(function (data, status, headers, config) {
+                $http.get("/api/Eligibility").success(function (data, status, headers, config) {
                     $scope.nQuestion.options = data.options;
                     $scope.nQuestion.title = data.title;
                     $scope.nQuestion.answered = false;
@@ -23,7 +23,7 @@ var Questions;
                 $scope.nQuestion = new Model.Question();
                 $scope.nQuestion.working = true;
                 $scope.nQuestion.answered = true;
-                $http.post("/api/api/Eligibility", { 'questionId': option.questionId, 'optionId': option.id }).success(function (data, status, headers, config) {
+                $http.post("/api/Eligibility", { 'questionId': option.questionId, 'optionId': option.id }).success(function (data, status, headers, config) {
                     $scope.nQuestion.correctAnswer = (data === true);
                     $scope.nQuestion.working = false;
                     //

@@ -125,7 +125,6 @@ namespace LifeLine.Web.Controllers
             var donor = Helper.MapViewModelToModel(donorVM);
 
             _db.Edit(donor);
-            return RedirectToAction("Index");
             return View(donorVM);
         }
 
