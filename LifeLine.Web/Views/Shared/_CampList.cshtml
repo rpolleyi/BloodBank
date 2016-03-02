@@ -1,0 +1,41 @@
+﻿
+@model IEnumerable<LifeLine.Core.Models.Camp>
+
+<p>
+    @Html.ActionLink("Create New", "Create","Camp")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Where)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.When)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Where)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.When)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit","Camp" new { id = item.Id }) |
+                @Html.ActionLink("Details","Details","Camp", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", "Camp", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

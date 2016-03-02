@@ -20,7 +20,7 @@ namespace LifeLine.Infrastructure.Implementation
             using (var connection = new SqlConnection(_connString))
             {
                 connection.Open();
-                using (var command = new SqlCommand(@"SELECT [Id] ,[Name] ,[Where] ,[When] FROM [dbo].[Camp]", connection))
+                using (var command = new SqlCommand(@"SELECT [Id] ,[Name] ,[Where] ,[When] FROM [dbo].[Camps]", connection))
                 {
                     command.Notification = null;
 

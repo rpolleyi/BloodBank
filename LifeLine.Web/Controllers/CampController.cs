@@ -28,10 +28,12 @@ namespace LifeLine.Web.Controllers
         // GET: Camp
         public ActionResult Index()
         {
-            var campList = _db.GetAll();
-            var campViewModels = campList.Select(i => Automap.MapModelToViewModel<Camp,CampVM>(i)).ToList();
+            //var campList = _db.GetAll();
+            //var campViewModels = campList.Select(i => Automap.MapModelToViewModel<Camp,CampVM>(i)).ToList();
 
-            return View(campViewModels);
+            //return View(campViewModels);
+
+           
         }
 
         // GET: Camp/Details/5
@@ -133,10 +135,11 @@ namespace LifeLine.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public ActionResult GetMessages()
         {
             MessagesRepository _messageRepository = new MessagesRepository();
-            return PartialView("_MessagesList", _messageRepository.GetAllMessages());
+            return PartialView("_CampList", _messageRepository.GetAllMessages());
         }
 
     }
