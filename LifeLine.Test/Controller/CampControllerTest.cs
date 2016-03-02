@@ -16,10 +16,13 @@ namespace LifeLine.Test.Controller
 {
     public class CampControllerTest
     {
+        #region Private Fields       
         private Mock<ICampService> _mockCampService = new Mock<ICampService>();
         private CampController _controller;
         private List<Camp> campList;
+        #endregion
 
+        #region Constructor
         public CampControllerTest()
         {
             _controller = new CampController(_mockCampService.Object);
@@ -30,16 +33,15 @@ namespace LifeLine.Test.Controller
                 new Camp(){Id = Guid.NewGuid(),Name = "Test3",When = "01/01/2016",Where = "SM"}
             };
         }
+        #endregion
 
-
-        #region Create Test Methods
+        #region Test Methods
         /// <summary>
         /// Verifying the count of camps returned by the service is same as returned by the controller
         /// </summary>
         [Fact]
-        public void Get_Return_All_Camp_List()
-        {
-            
+        public void Should_Return_All_Camp_List()
+        {            
             //Arrange
             _mockCampService.Setup(i => i.GetAll()).Returns(campList);
 
@@ -54,7 +56,7 @@ namespace LifeLine.Test.Controller
         /// Verifying if a camp object is getting created successfully or not
         /// </summary>
         [Fact]
-        public void Create_Camp_Valid()
+        public void Should_Create_Valid_Camp()
         {
             //Arrange
             var camp = new Camp() { Name = "Test Blood Drive",Where="venice" , When="02/28/2016" };
@@ -73,7 +75,7 @@ namespace LifeLine.Test.Controller
         /// verifying the create method for a invalid camp object
         /// </summary>
         [Fact]
-        public void Invalid_Asset_Create()
+        public void Should_Not_Create_Invalid_Camp()
         {
             //Arrange
             var camp = new Camp() { Name = "", Where = "venice", When = "02/28/2016" };
@@ -87,7 +89,33 @@ namespace LifeLine.Test.Controller
             _mockCampService.Verify(m => m.Add(camp), Times.Never);
             Assert.Equal("", result.ViewName);
         }
-        
+
+        /// <summary>
+        /// Test to get Camp detail by ID which should not be null
+        /// </summary>
+        [Fact]
+        public void Should_Get_Camp_ByID()
+        {
+            // ARRANGE
+            //Creating a dummy camp object with specific Guid for this test method
+            var camp = new Camp()
+            {
+                Id = new Guid("12AE8070-4B10-4618-A1AD-53CD4748C8D1"),
+                Name = "Test Camp 1",
+                Where = "venice",
+                When = "02/28/2016"
+            };
+            //Specifiy a setup on the Camp service mocked type for a call to a returning method
+            _mockCampService.Setup(s => s.FindById(new Guid("12AE8070-4B10-4618-A1AD-53CD4748C8D1"))).Returns(camp);
+
+            //ACT
+            //Verifying if the mock controller is also returing the same camp object from the detail call
+            var result = _controller.Details(new Guid("12AE8070-4B10-4618-A1AD-53CD4748C8D1"));
+
+
+            //ASSERT
+            Assert.NotNull(result);
+        }       
         #endregion
     }
 }

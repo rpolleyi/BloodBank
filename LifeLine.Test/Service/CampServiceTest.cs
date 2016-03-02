@@ -47,21 +47,7 @@ namespace LifeLine.Test.Service
 
             return mockSet;
         }
-
-        //[Fact]
-        /// <summary>
-        /// Verifying the count of camps returned by the service
-        /// </summary>
-        //public void Get_Return_All_Camp_List_From_Service()
-        //{
-        //    //Act
-        //    List<Camp> results = _mockCampService.GetAll().ToList() as List<Camp>;
-
-        //    //Assert
-        //    Assert.NotNull(results);
-        //    Assert.Equal(3, results.Count);
-        //}
-
+        
         /// <summary>
         /// Verifying if a camp object is getting created successfully or not by the service
         /// </summary>
