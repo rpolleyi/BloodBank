@@ -384,10 +384,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\TypeScript\CampsUpdateSQLDependency.ts" />
     <TypeScriptCompile Include="Scripts\Controllers\eligibilityController.ts" />
     <TypeScriptCompile Include="Scripts\Controllers\eligibilityModel.ts" />
-    <TypeScriptCompile Include="Scripts\SiteActivity.ts" />
+    <TypeScriptCompile Include="Scripts\TypeScript\SiteActivity.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\signalr\signalr.d.ts" />

@@ -46,7 +46,7 @@ namespace LifeLine.Web.ViewModel
 
         [Required]
         [Display(Name = Utilities.Constants.DonorContants.CAMP_DISPLAYNAME)]
-        [NotMapped]
+       // [NotMapped]
         public virtual Camp Camp { get; set; }
 
         [NotMapped]

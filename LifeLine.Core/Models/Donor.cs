@@ -40,7 +40,7 @@ namespace LifeLine.Core.Models
         public Guid CampId { get; set; }
 
         [ForeignKey("CampId")]
-        [NotMapped]
+        //[NotMapped]
         public virtual Camp Camp { get; set; }
 
         [NotMapped]

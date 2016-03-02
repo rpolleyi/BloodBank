@@ -92,5 +92,27 @@ namespace LifeLine.Web.Utilities
             var mapper = config.CreateMapper();
             return mapper.Map<TViewModel>(model);
         }
+
+        public static DonorVM MapModelToViewModel(Donor model)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Donor, DonorVM>()
+                 .ForMember(dest => dest.Camp, opt => opt.MapFrom(src => src.Camp));
+            });
+            var mapper = config.CreateMapper();
+            return mapper.Map<DonorVM>(model);
+        }
+
+        public static Donor MapViewModelToModel(DonorVM viewmodel)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<DonorVM, Donor>()
+                 .ForMember(dest => dest.CampId, opt => opt.MapFrom(src => src.Camp.Id));
+            });
+            var mapper = config.CreateMapper();
+            return mapper.Map<Donor>(viewmodel);
+        }
     }
 }

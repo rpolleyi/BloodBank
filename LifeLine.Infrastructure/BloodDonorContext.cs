@@ -3,6 +3,7 @@ using LifeLine.Core;
 using TrackerEnabledDbContext.Identity;
 using TrackerEnabledDbContext.Common.Configuration;
 using LifeLine.Core.Models;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace LifeLine.Infrastructure
 {
@@ -31,6 +32,16 @@ namespace LifeLine.Infrastructure
         public DbSet<EligibilityOption> EligibilityOptions { get; set; }
 
         public DbSet<EligibilityAnswer> EligibilityAnswers { get; set; }
-        
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<Donor>()
+                .HasRequired(p => p.Camp).WithMany(c=>c.Donors);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }

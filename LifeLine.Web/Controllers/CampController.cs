@@ -36,6 +36,11 @@ namespace LifeLine.Web.Controllers
 
         }
 
+        /// <summary>
+        /// Loads the camp detail
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: Camp/Details/5
         public ActionResult Details(Guid id)
         {
@@ -71,7 +76,7 @@ namespace LifeLine.Web.Controllers
 
                 campVM.Id = Guid.NewGuid();
                 _db.Add(camp);
-                return RedirectToAction("Index");
+                return RedirectToAction(Constants.URL_INDEX);
             }
 
             return View(campVM);
@@ -106,7 +111,7 @@ namespace LifeLine.Web.Controllers
 
                 _db.Edit(camp);
 
-                return RedirectToAction("Index");
+                return RedirectToAction(Constants.URL_INDEX);
             }
             return View(campVM);
         }
@@ -132,14 +137,7 @@ namespace LifeLine.Web.Controllers
         {
             Camp camp = _db.FindById(id);
             _db.Remove(camp);
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public ActionResult GetMessages()
-        {
-            MessagesRepository _messageRepository = new MessagesRepository();
-            return PartialView("_CampList", _messageRepository.GetAllMessages());
+            return RedirectToAction(Constants.URL_INDEX);
         }
 
     }

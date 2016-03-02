@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 
 namespace LifeLine.Web.Utilities
 {
     public class Constants
     {
+
+        public const string URL_INDEX = "index";
         public static class DonorContants
         {
             public const string FIRST_NAME_DISPLAYNAME = "First Name";
@@ -24,6 +27,7 @@ namespace LifeLine.Web.Utilities
         {
             public const int CAMP_NAME_LENGTH = 50;
             public const int WHERE_LENGTH = 30;
+
         }
     }
 }

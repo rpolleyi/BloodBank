@@ -9,7 +9,7 @@ $(function () {
     };
     // Start the connection.
     $.connection.hub.start().done(function () {
-       // alert("connection started");
+        alert("connection started");
         getAllMessages();
     }).fail(function (e) {
         alert(e);

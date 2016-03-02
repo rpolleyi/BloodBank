@@ -34,19 +34,23 @@ namespace LifeLine.Web.Controllers
         [HttpGet,Route("")]
         public ActionResult Index()
         {
-            var donorList = _db.GetAll();
+            var donorList = _db.GetAll().ToList();
 
             //do the model to Vm ampping
             if (donorList != null)
             {
-                //var donorViewModels = donorList.Select(i => Helper.MapModelToViewModel(i)).ToList();
-                var donorViewModels = donorList.Select(i => Automap.MapModelToViewModel<Donor, DonorVM>(i)).ToList();
+                var donorViewModels = donorList.Select(i => Automap.MapModelToViewModel(i)).ToList();
 
                 return View(donorViewModels);
             }
             return View(new List<DonorVM>());
         }
 
+        /// <summary>
+        /// Retrive the details of the Donor
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         //specify a constraint for the Id to a Guid
         [HttpGet, Route("Config/Details")]
         public ActionResult Details(Guid id)
@@ -59,11 +63,9 @@ namespace LifeLine.Web.Controllers
             donor.AuditLogs = _db.AuditLog().Where(i => i.RecordId == donor.Id.ToString())
                                                     .OrderByDescending(x => x.EventDateUTC).ToList();
             //Map the model to VM
-            //var donorVM = Helper.MapModelToViewModel(donor);
-            //donorVM.Camp = _campdb.FindById(donor.CampId);
-             var donorVM = Automap.MapModelToViewModel<Donor, DonorVM>(donor);
+            var donorVM = Automap.MapModelToViewModel<Donor, DonorVM>(donor);
             donorVM.Camp = _campdb.FindById(donor.CampId);
-
+            
             return View(donorVM);
         }
 
@@ -86,13 +88,9 @@ namespace LifeLine.Web.Controllers
         {
             //Map the VM to model
             var donor = Helper.MapViewModelToModel(donorVM);
-
-            //var donor = Helper.MapViewModelToModel<DonorVM, Donor>(donorVM);
-
+            
             _db.Add(donor);
-            return RedirectToAction("Index");
-
-           // return View(donorVM);
+            return RedirectToAction(Constants.URL_INDEX);
         }
 
         //specify a constraint for the Id to a Guid
@@ -108,7 +106,7 @@ namespace LifeLine.Web.Controllers
             //Map the model to VM
             var donorVM = Helper.MapModelToViewModel(donor);
             donorVM.CampsList = _campdb.GetCampsList();
-            
+
             return View(donorVM);
         }
 
@@ -117,7 +115,7 @@ namespace LifeLine.Web.Controllers
         /// </summary>
         /// <param name="donorVM">donor values as got from the donor view model binded to the view</param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost, Route("Config/Update")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(DonorVM donorVM)
         {
@@ -125,7 +123,7 @@ namespace LifeLine.Web.Controllers
             var donor = Helper.MapViewModelToModel(donorVM);
 
             _db.Edit(donor);
-            return View(donorVM);
+            return RedirectToAction(Constants.URL_INDEX);
         }
 
         [HttpGet, Route("Config/Remove")]
@@ -148,15 +146,19 @@ namespace LifeLine.Web.Controllers
         /// </summary>
         /// <param name="id">Id of the donor</param>
         /// <returns></returns>
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete"), Route("Config/Remove")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
             Donor donor = _db.FindById(id) as Donor;
             _db.Remove(donor);
-            return RedirectToAction("Index");
+            return RedirectToAction(Constants.URL_INDEX);
         }
 
+        /// <summary>
+        /// Loads the donor eligibility page
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Eligibility()
         {
             return View();
