@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using TrackerEnabledDbContext.Common.Models;
 
 namespace LifeLine.Web.ViewModel
 {
@@ -28,30 +29,33 @@ namespace LifeLine.Web.ViewModel
         [NotMapped]
         public virtual List<Donor> Donors { get; set; }
 
-        #region Mapping VM/M and M/VM
+        [NotMapped]
+        public virtual List<AuditLog> AuditLogs { get; set; }
 
-        public static Camp MapViewModelToModel(CampVM campVM)
-        {
-            return new LifeLine.Core.Models.Camp()
-            {
-                Id = campVM.Id,
-                Name = campVM.Name,
-                Where = campVM.Where,
-                When = campVM.When
-            };
-        }
+        //#region Mapping VM/M and M/VM
 
-        public static CampVM MapModelToViewModel(Camp camp)
-        {
-            return new CampVM()
-            {
-                Id = camp.Id,
-                Name = camp.Name,
-                Where = camp.Where,
-                When = camp.When
-            };
-        }
+        //public static Camp MapViewModelToModel(CampVM campVM)
+        //{
+        //    return new LifeLine.Core.Models.Camp()
+        //    {
+        //        Id = campVM.Id,
+        //        Name = campVM.Name,
+        //        Where = campVM.Where,
+        //        When = campVM.When
+        //    };
+        //}
 
-        #endregion
+        //public static CampVM MapModelToViewModel(Camp camp)
+        //{
+        //    return new CampVM()
+        //    {
+        //        Id = camp.Id,
+        //        Name = camp.Name,
+        //        Where = camp.Where,
+        //        When = camp.When
+        //    };
+        //}
+
+        //#endregion
     }
 }

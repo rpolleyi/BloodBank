@@ -23,10 +23,7 @@ namespace LifeLine.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            //Start SqlDependency with application initialization
-            //SqlDependency.Start(_connString);
-
+            
             BloodDonorInitalizeDb db = new BloodDonorInitalizeDb();
             System.Data.Entity.Database.SetInitializer(db);
         }
@@ -57,12 +54,7 @@ namespace LifeLine.Web
             //redirect to the error page
             throw raisedException;
         }
-
-        protected void Application_End()
-        {
-            //Stop SQL dependency
-            //SqlDependency.Stop(_connString);
-        }
+        
 
     }
 }

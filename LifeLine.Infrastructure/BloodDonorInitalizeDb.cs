@@ -65,7 +65,6 @@ namespace LifeLine.Infrastructure
                     FirstName = "John",
                     LastName = "Smith",
                     PhoneNumber = "333333333",
-                    DonationDate = "01/14/2016",
                     CampId = new Guid("A176872A-BD7E-49F1-A4AE-D66947421CE9")
                 });
                 donors.Add(new Donor
@@ -74,7 +73,6 @@ namespace LifeLine.Infrastructure
                     FirstName = "Black",
                     LastName = "Smith",
                     PhoneNumber = "444444444",
-                    DonationDate = "01/20/2016",
                     CampId = new Guid("56E72E4B-1D70-4844-9CA3-0930F3073A9B")
                 });
 

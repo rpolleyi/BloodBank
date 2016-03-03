@@ -27,7 +27,6 @@ namespace LifeLine.Web.Utilities
                 LastName = donorVM.LastName,
                 PhoneNumber = donorVM.PhoneNumber,
                 Email = donorVM.Email,
-                DonationDate = donorVM.DonationDate,
                 CampId = donorVM.CampId,
                 AuditLogs = donorVM.AuditLogs,                
             };
@@ -47,7 +46,6 @@ namespace LifeLine.Web.Utilities
                 LastName = donor.LastName,
                 PhoneNumber = donor.PhoneNumber,
                 Email = donor.Email,
-                DonationDate = donor.DonationDate,
                 CampId = donor.CampId,
                 AuditLogs = donor.AuditLogs
             };

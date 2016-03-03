@@ -90,6 +90,16 @@ namespace LifeLine.Infrastructure.Service
         {
             return new SelectList(GetAll(), "Id", "Name");
         }
+
+        /// <summary>
+        /// All the auditlog related to camp
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<AuditLog> AuditLog()
+        {
+            return _campRepository.AuditLog();
+        }
+
         #endregion
     }
 }

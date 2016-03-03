@@ -49,7 +49,8 @@ namespace LifeLine.Web.Controllers
             {
                 return HttpNotFound();
             }
-
+            camp.AuditLogs = _db.AuditLog().Where(i => i.RecordId == camp.Id.ToString())
+                                                    .OrderByDescending(x => x.EventDateUTC).ToList();
             //Map the model to VM
             var campVM = Automap.MapModelToViewModel<Camp, CampVM>(camp);
 

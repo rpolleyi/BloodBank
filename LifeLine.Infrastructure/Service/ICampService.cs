@@ -41,6 +41,12 @@ namespace LifeLine.Infrastructure.Service
         /// <param name="id">Id of the camp entry</param>
         Camp FindById(Guid id);
 
+        /// <summary>
+        /// All the auditlog related to camp
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<AuditLog> AuditLog();
+
         SelectList GetCampsList();
     }
 }

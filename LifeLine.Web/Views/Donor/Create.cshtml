@@ -47,11 +47,6 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-md-4">
-                        <label for="DonationDate">Donation On</label>
-                        @Html.EditorFor(model => model.DonationDate, new { @class = "form-control", placeholder = "Donation On" })
-                        @Html.ValidationMessageFor(model => model.DonationDate, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-4">
                         <label for="CampId">Camp</label>
                         @Html.DropDownListFor(m => m.CampId, Model.CampsList, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.CampId, "", new { @class = "text-danger" })

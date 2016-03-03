@@ -32,10 +32,6 @@ namespace LifeLine.Core.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Display(Name = Utilities.Constants.DonorContants.DONATION_DATE_DISPLAYNAME)]
-        [DataType(DataType.Date)]
-        public string DonationDate { get; set; }
-
         [Required]
         public Guid CampId { get; set; }
 

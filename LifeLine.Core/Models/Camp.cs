@@ -5,9 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrackerEnabledDbContext.Common.Models;
 
 namespace LifeLine.Core.Models
 {
+    [TrackChanges]
     public class Camp
     {
         [Key]
@@ -27,5 +29,8 @@ namespace LifeLine.Core.Models
         
         [NotMapped]
         public virtual List<Donor> Donors { get; set; }
+
+        [NotMapped]
+        public virtual List<AuditLog> AuditLogs { get; set; }
     }
 }
