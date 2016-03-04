@@ -13,6 +13,7 @@ namespace LifeLine.Core.Models
     public class Camp
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [Required]

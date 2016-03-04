@@ -15,6 +15,7 @@ namespace LifeLine.Core.Models
     [TrackChanges]
     public class Donor
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         [Required]
         [StringLength(Utilities.Constants.DonorContants.FIRST_NAME_LENGTH)]

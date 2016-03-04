@@ -67,7 +67,7 @@ namespace LifeLine.Test.Controller
 
             //Assert
             _mockCampService.Verify(m => m.Add(It.IsAny<Camp>()), Times.Once);
-            Assert.Equal("Index", result.RouteValues["action"]);
+            Assert.Equal("index", result.RouteValues["action"]);
 
         }
 

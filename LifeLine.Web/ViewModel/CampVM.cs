@@ -11,7 +11,6 @@ namespace LifeLine.Web.ViewModel
 {
     public class CampVM
     {
-        [Key]
         public Guid Id { get; set; }
 
         [Required]
@@ -26,10 +25,8 @@ namespace LifeLine.Web.ViewModel
         [DataType(DataType.Date)]
         public string When { get; set; }
 
-        [NotMapped]
         public virtual List<Donor> Donors { get; set; }
-
-        [NotMapped]
+        
         public virtual List<AuditLog> AuditLogs { get; set; }
 
         //#region Mapping VM/M and M/VM

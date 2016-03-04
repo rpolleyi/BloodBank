@@ -51,7 +51,7 @@ namespace LifeLine.Infrastructure
 
                 context.Camps.AddRange(camps);
 
-                context.SaveChanges();
+               // context.SaveChanges();
             }
 
             //Default Donor entries
@@ -78,7 +78,7 @@ namespace LifeLine.Infrastructure
 
                 context.Persons.AddRange(donors);
 
-                context.SaveChanges();
+                //context.SaveChanges();
 
             }
 

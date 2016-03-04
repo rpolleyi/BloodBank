@@ -15,8 +15,8 @@ using System.Web.Mvc;
 
 namespace LifeLine.Web.Api
 {
-    [System.Web.Mvc.Authorize]
-    [System.Web.Mvc.Route("api/[controller]")]
+    [Authorize]
+    [Route("api/[controller]")]
     public class EligibilityController : ApiController
     {
         private readonly BloodDonorContext _context=  new BloodDonorContext();
@@ -114,9 +114,9 @@ namespace LifeLine.Web.Api
             if (selectedOption != null)
             {
                 answer.EligibilityOption = selectedOption;
-                this._context.EligibilityAnswers.Add(answer);
+                _context.EligibilityAnswers.Add(answer);
 
-                this._context.SaveChanges();
+                _context.SaveChanges();
             }
 
             return selectedOption != null && selectedOption.IsCorrect;

@@ -16,9 +16,9 @@ namespace LifeLine.Web.ViewModel
     /// <summary>
     /// Details about Donor(derived from Person class TPH approach)
     /// </summary>
-    [TrackChanges]
     public class DonorVM
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [Required]

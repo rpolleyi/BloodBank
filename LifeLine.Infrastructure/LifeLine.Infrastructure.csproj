@@ -135,13 +135,16 @@
     <Compile Include="Exceptions\DonorNotFoundException.cs" />
     <Compile Include="Implementation\CampRepository.cs" />
     <Compile Include="Implementation\DonationRepository.cs" />
-    <Compile Include="Implementation\MessagesRepository.cs" />
+    <Compile Include="Migrations\201603032153587_InitialCreate.cs" />
+    <Compile Include="Migrations\201603032153587_InitialCreate.Designer.cs">
+      <DependentUpon>201603032153587_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ICampService.cs" />
     <Compile Include="Service\CampService.cs" />
     <Compile Include="Service\DonationService.cs" />
     <Compile Include="Service\IDonationService.cs" />
-    <Compile Include="SignalR\MessageHub.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -161,6 +164,11 @@
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603032153587_InitialCreate.resx">
+      <DependentUpon>201603032153587_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
